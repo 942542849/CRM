@@ -118,7 +118,9 @@
 				if (obj.event === 'search') {
 					var txt = $(event.target).prev().find("input").val();
 					reload('demo',{txt : txt});
-				} else {
+				} 
+				else if(obj.event === 'add')
+				{
 					openFrame("add.jsp");
 				}
 			});

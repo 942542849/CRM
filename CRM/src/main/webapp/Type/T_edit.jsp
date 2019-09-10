@@ -8,7 +8,7 @@
 <link href="../show/lib/layui/css/layui.css" rel="stylesheet">
 <script type="text/javascript" src="../show/lib/layui/layui.all.js"></script>
 <script src="../show/js/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="../show/js/my.js"></script><title></title>
+<script type="text/javascript" src="../show/js/my.js"></script>
 
 <title></title>
 </head>
