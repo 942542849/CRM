@@ -23,7 +23,7 @@ public interface User_Dao {
 	public List<User> select(@Param("txt") String txt,@Param("limit") String limit);
 	@Select("select crm_user.*,crm_role.name rolename,crm_department.name departmentname from ( crm_user inner join crm_user_department on crm_user_department.id=crm_user.department_id) inner join crm_user_role on crm_user.role_id =crm_user_role.id")
 	public List<User> selectAll();
-	@Insert("insert into crm_user(name,sex,tel,pass,department_id,role_id) values(#{name},#{sex},#{name},#{tel},#{pass},#{department_id},#{role_id})")
+	@Insert("insert into crm_user(name,sex,tel,pass,department_id,role_id) values(#{name},#{sex},#{tel},#{pass},#{department_id},#{role_id})")
 	public void insert(User t);
 	@Update("update crm_user set name=#{name},sex=#{sex},tel=#{tel},pass=#{pass},department_id=#{department_id},role_id=#{role_id} where id=#{id}")
 	public void update(User t);

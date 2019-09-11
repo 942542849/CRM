@@ -38,7 +38,7 @@ public class UserController {
 		}
 		@RequestMapping("insert")
 		public @ResponseBody String insert(User b,ModelMap m){
-//			System.out.println("Bookcontroller.insert()");
+
 			userservice.insert(b);
 			return "{\"status\":1}";
 		}
