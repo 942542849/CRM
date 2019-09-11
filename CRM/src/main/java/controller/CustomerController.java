@@ -32,11 +32,11 @@ public class CustomerController {
 		
 		@RequestMapping("index")
 		public @ResponseBody ReturnInfo index(String txt,Integer page,Integer limit){
-			String whera="";
+			String where="";
 			if(txt!=null) {
-				whera="where crm_user.name like '%"+txt+"%'";
+				where="where crm_customer.name like '%"+txt+"%'";
 			}
-			return customerservice.select(whera,page,limit);
+			return customerservice.select(where,page,limit);
 		}
 		@RequestMapping("delete")
 		public @ResponseBody String delete(int id){

@@ -57,6 +57,7 @@
 					field : 'id',
 					title : 'ID',
 					width : 80,
+					sort : true,
 				}, {
 					field : 'name',
 					title : '客户名',
@@ -74,8 +75,9 @@
 				},
 				{
 					field : 'username',
-					title : '用户名',
+					title : '销售用户名',
 					width : 80,
+					sort : true,
 					
 				},{
 					field : 'levelname',
