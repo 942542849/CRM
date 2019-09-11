@@ -8,54 +8,61 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import model.Book;
-import model.Type;
-import service_Impl.Book_Service_Imp;
-import service_Impl.Type_Service_Imp;
+import model.User;
+import service_Impl.Department_Service_Impl;
+import service_Impl.Role_Service_Impl;
+import service_Impl.User_Service_Impl;
 import utils.ReturnInfo;
 @Controller
-@RequestMapping("Book")
-public class Bookcontroller {
+@RequestMapping("User")
+public class UserController {
 		@Autowired
-		Type_Service_Imp tservice;
+		Department_Service_Impl depservice;
 		@Autowired
-		Book_Service_Imp service;
+		Role_Service_Impl roleservice;
+		@Autowired
+		User_Service_Impl userservice;
 		
 		@RequestMapping("index")
 		public @ResponseBody ReturnInfo index(String txt,Integer page,Integer limit){
 			String whera="";
 			if(txt!=null) {
-				whera="where book.name like '%"+txt+"%'";
+				whera="where crm_user.name like '%"+txt+"%'";
 			}
-			return service.select(whera,page,limit);
+			return userservice.select(whera,page,limit);
 		}
 		@RequestMapping("delete")
 		public @ResponseBody String delete(int id){
-			service.delete(id);
+			userservice.delete(id);
 			return "{\"status\":1}";
 		}
 		@RequestMapping("insert")
-		public @ResponseBody String insert(Book b,ModelMap m){
+		public @ResponseBody String insert(User b,ModelMap m){
 //			System.out.println("Bookcontroller.insert()");
-			service.insert(b);
+			userservice.insert(b);
 			return "{\"status\":1}";
 		}
 		@RequestMapping("edit")
-		public @ResponseBody Book edit(int id){
-			return service.selectById(id);
+		public @ResponseBody User edit(int id){
+			return userservice.selectById(id);
 		}
 		@RequestMapping("update")
-		public @ ResponseBody String update(Book b,ModelMap m) {
-			service.update(b);
+		public @ ResponseBody String update(User b,ModelMap m) {
+			userservice.update(b);
 			return "{\"status\":1}";
 		}
 		@RequestMapping("getSexs")
 		public @ResponseBody String[] getSexs() {
-			return Book.sexs;
+			return User.sexs;
 		}
-		@RequestMapping("getTypes")
-		public @ResponseBody List getTypes() {
-			return tservice.select();
+		@RequestMapping("getDepartments")
+		public @ResponseBody List getDepartments() {
+			return depservice.select();
+		}
+		
+		@RequestMapping("getRoles")
+		public @ResponseBody List getRoles() {
+			return roleservice.select();
 		}
 		
 		

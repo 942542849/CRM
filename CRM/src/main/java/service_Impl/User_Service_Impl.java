@@ -5,16 +5,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dao.Book_Dao;
-import dao.Tpye_Dao;
-import model.Book;
-import service.Book_Service;
+import dao.User_Dao;
+import dao.Department_Dao;
+import dao.Role_Dao;
+import model.User;
+import service.User_Service;
+import service.Department_Service;
+import service.Role_Service;
 import utils.ReturnInfo;
 @Service
 
-public class Book_Service_Imp implements Book_Service{
+public class User_Service_Impl implements User_Service{
 @Autowired
-Book_Dao dao;
+User_Dao dao;
 	public ReturnInfo select(String txt,Integer page,Integer max) {
 		boolean canpage=page!=null;
 		ReturnInfo info = new ReturnInfo();
@@ -23,12 +26,12 @@ Book_Dao dao;
 		return info;
 	}
 
-	public void insert(Book t) {
+	public void insert(User t) {
 		dao.insert(t);
 		
 	}
 
-	public void update(Book t) {
+	public void update(User t) {
 		dao.update(t);
 	}
 
@@ -36,7 +39,7 @@ Book_Dao dao;
 		dao.delete(id);
 	}
 
-	public Book selectById(int id) {
+	public User selectById(int id) {
 		return dao.selectById(id);
 	}
 
@@ -45,7 +48,7 @@ Book_Dao dao;
 		return dao.selectCount(txt);
 	}
 
-	public List<Book> selectAll() {
+	public List<User> selectAll() {
 		// TODO Auto-generated method stub
 		return dao.selectAll();
 	}

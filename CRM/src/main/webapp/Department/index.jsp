@@ -8,7 +8,6 @@
 <script type="text/javascript" src="../show/lib/layui/layui.all.js"></script>
 <script src="../show/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="../show/js/my.js"></script><title></title>
-
 <title></title>
 <style type="text/css">
 .input {
@@ -34,8 +33,8 @@
     <div class="layui-input-inline">
       <input type="text" name="txt" lay-verify="title"  autocomplete="off" placeholder="请输入名称" class="layui-input input">
     </div>
-    <button class="layui-btn layui-btn-sm" lay-event="search">查询</button>
-    <button class="layui-btn layui-btn-sm" lay-event="add">新增</button>
+    <button class="layui-btn layui-btn-sm" lay-event="search">查询部门</button>
+    <button class="layui-btn layui-btn-sm" lay-event="add">新增部门</button>
   </div>
 </script>
 
@@ -62,16 +61,8 @@
 					fixed : 'right'
 				}, {
 					field : 'name',
-					title : '用户名',
+					title : '部门名称',
 					width : 280
-				}, {
-					field : 'sexname',
-					title : '性别',
-					width : 180
-				}, {
-					field : 'typename',
-					title : '类型',
-					width : 180
 				}, {
 					fixed : 'right',
 					title : '操作',
@@ -110,7 +101,7 @@
 								}, "json");
 					});
 				}else{
-					openFrame('edit.jsp?id='+data.id);
+					openFrame('Dep_edit.jsp?id='+data.id);
 				}
 			});
 
@@ -119,9 +110,8 @@
 					var txt = $(event.target).prev().find("input").val();
 					reload('demo',{txt : txt});
 				} 
-				else if(obj.event === 'add')
-				{
-					openFrame("add.jsp");
+				else if (obj.event === 'add'){
+					openFrame("Dep_add.jsp");
 				}
 			});
 

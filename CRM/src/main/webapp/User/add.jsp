@@ -8,8 +8,7 @@
 <link href="../show/lib/layui/css/layui.css" rel="stylesheet">
 <script type="text/javascript" src="../show/lib/layui/layui.all.js"></script>
 <script src="../show/js/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="../show/js/my.js"></script><title></title>
-
+<script type="text/javascript" src="../show/js/my.js"></script>
 
 <title></title>
 </head>
@@ -22,20 +21,45 @@
   <div class="layui-form-item">
     <label class="layui-form-label">名称</label>
     <div class="layui-input-block">
-      <input type="text" name="name"  autocomplete="off" placeholder="请输入标题" class="layui-input">
+      <input type="text" name="name"  autocomplete="off" placeholder="请输入姓名" class="layui-input">
     </div>
   </div>
+  
    <div class="layui-form-item">
     <label class="layui-form-label">性别</label>
     <div class="layui-input-block">
       <select name="sex" >
       </select>
     </div>
-  </div>
-   <div class="layui-form-item">
-    <label class="layui-form-label">类型</label>
+    </div>
+    
+    
+     <div class="layui-form-item">
+    <label class="layui-form-label">电话</label>
     <div class="layui-input-block">
-      <select name="typeid" >
+      <input type="text" name="tel"  autocomplete="off" placeholder="请输入电话" class="layui-input">
+    </div>
+  </div>
+  
+    <div class="layui-form-item">
+    <label class="layui-form-label">登陆密码</label>
+    <div class="layui-input-block">
+      <input type="text" name="pass"  autocomplete="off" placeholder="请输入登陆密码" class="layui-input">
+    </div>
+  </div>
+    
+   <div class="layui-form-item">
+    <label class="layui-form-label">部门</label>
+    <div class="layui-input-block">
+      <select name="department_id" >
+      </select>
+    </div>
+  </div>
+  
+   <div class="layui-form-item">
+    <label class="layui-form-label">职位</label>
+    <div class="layui-input-block">
+      <select name="role_id" >
       </select>
     </div>
   </div>
@@ -50,7 +74,8 @@
 <script type="text/javascript">
 
 getarray("getSexs.action",{},"[name=sex]",-1);
-getlist("getTypes.action",{},"[name=typeid]",-1);
+getlist("getDepartments.action",{},"[name=department_id]",-1);
+getlist("getRoles.action",{},"[name=role_id]",-1);
 layui.use('form', function(){
 	  var form = layui.form;
 	  form.on('submit(demo1)', function(data){

@@ -2,15 +2,15 @@ package service;
 
 import java.util.List;
 
-import model.Book;
+import model.User;
 import utils.ReturnInfo;
 
-public interface Book_Service {
+public interface User_Service {
 	public int selectCount(String txt);
-	public Book selectById(int id);
+	public User selectById(int id);
 	public ReturnInfo select(String txt,Integer limit,Integer page);
-	public List<Book> selectAll();
-	public void insert(Book t);
-	public void update(Book t);
+	public List<User> selectAll();
+	public void insert(User t);
+	public void update(User t);
 	public void delete(int id);
 }

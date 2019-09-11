@@ -7,7 +7,7 @@
 <link href="../show/lib/layui/css/layui.css" rel="stylesheet">
 <script type="text/javascript" src="../show/lib/layui/layui.all.js"></script>
 <script src="../show/js/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="../show/js/my.js"></script><title></title>
+<script type="text/javascript" src="../show/js/my.js"></script>
 <title></title>
 <style type="text/css">
 .input {
@@ -61,9 +61,37 @@
 					fixed : 'right'
 				}, {
 					field : 'name',
-					title : '名称',
-					width : 280
+					title : '用户名',
+					width : 180
 				}, {
+					field : 'sexname',
+					title : '性别',
+					width : 80
+				}, 
+				{
+					field : 'tel',
+					title : '联系电话',
+					width : 80,
+					
+				},
+				{
+					field : 'pass',
+					title : '密码',
+					width : 80,
+					
+				},{
+					field : 'departmentname',
+					title : '部门',
+					width : 80
+				}, {
+					field : 'rolename',
+					title : '职位',
+					width : 80
+				},{
+					field : 'status',
+					title : '状态',
+					width : 80
+				},{
 					fixed : 'right',
 					title : '操作',
 					toolbar : '#barDemo',
@@ -101,7 +129,7 @@
 								}, "json");
 					});
 				}else{
-					openFrame('T_edit.jsp?id='+data.id);
+					openFrame('edit.jsp?id='+data.id);
 				}
 			});
 
@@ -109,9 +137,8 @@
 				if (obj.event === 'search') {
 					var txt = $(event.target).prev().find("input").val();
 					reload('demo',{txt : txt});
-				} 
-				else if (obj.event === 'add'){
-					openFrame("T_add.jsp");
+				} else {
+					openFrame("add.jsp");
 				}
 			});
 
