@@ -55,6 +55,10 @@ public class UserController {
 		public @ResponseBody String[] getSexs() {
 			return User.sexs;
 		}
+		@RequestMapping("getStatuss")
+		public @ResponseBody String[] getStatuss() {
+			return User.statuss;
+		}
 		@RequestMapping("getDepartments")
 		public @ResponseBody List getDepartments() {
 			return depservice.select();

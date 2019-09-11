@@ -65,6 +65,14 @@
   </div>
   
    <div class="layui-form-item">
+    <label class="layui-form-label">账号状态</label>
+    <div class="layui-input-block">
+      <select name="status" >
+      </select>
+    </div>
+    </div>
+  
+   <div class="layui-form-item">
     <div class="layui-input-block">
       <button class="layui-btn" lay-submit="" lay-filter="demo1">保存</button>
     </div>
@@ -79,6 +87,7 @@ $.post("edit.action",{id:id}, function(json) {
 	getarray("getSexs.action",{},"[name=sex]",json.sex);
 	getlist("getDepartments.action",{},"[name=department_id]",json.department_id);
 	getlist("getRoles.action",{},"[name=role_id]",json.role_id);
+	getarray("getStatuss.action",{},"[name=status]",json.sex);
 },"json");
 layui.use(['form',], function(){
 	  var form = layui.form;

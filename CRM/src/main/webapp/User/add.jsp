@@ -65,6 +65,14 @@
   </div>
   
    <div class="layui-form-item">
+    <label class="layui-form-label">账号状态</label>
+    <div class="layui-input-block">
+      <select name="status" >
+      </select>
+    </div>
+    </div>
+  
+   <div class="layui-form-item">
     <div class="layui-input-block">
       <button class="layui-btn" lay-submit="" lay-filter="demo1">保存</button>
     </div>
@@ -76,6 +84,7 @@
 getarray("getSexs.action",{},"[name=sex]",-1);
 getlist("getDepartments.action",{},"[name=department_id]",-1);
 getlist("getRoles.action",{},"[name=role_id]",-1);
+getarray("getStatuss.action",{},"[name=status]",-1);
 layui.use('form', function(){
 	  var form = layui.form;
 	  form.on('submit(demo1)', function(data){

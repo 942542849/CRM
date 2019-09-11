@@ -11,7 +11,7 @@ public class User {
 	private int department_id;
 	private String rolename;
 	private String departmentname;
-	private String status;
+	private int status;
 
 	public String getRolename() {
 		return rolename;
@@ -98,15 +98,18 @@ public class User {
 	}
 
 
-	public String getStatus() {
+	public int getStatus() {
 		return status;
 	}
 
 
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 
-
+	public static String[]statuss= {"账号锁死","账号正常"};
+	public String getStatusname() {
+		return statuss[status];
+	}
 	
 }

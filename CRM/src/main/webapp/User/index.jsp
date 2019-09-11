@@ -58,7 +58,6 @@
 					title : 'ID',
 					width : 80,
 					sort : true,
-					fixed : 'right'
 				}, {
 					field : 'name',
 					title : '用户名',
@@ -88,7 +87,7 @@
 					title : '职位',
 					width : 80
 				},{
-					field : 'status',
+					field : 'statusname',
 					title : '状态',
 					width : 80
 				},{
