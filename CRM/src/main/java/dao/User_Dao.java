@@ -21,7 +21,7 @@ public interface User_Dao {
 	public User selectById(int id); 
 	@Select("select crm_user.*,crm_user_role.name rolename,crm_user_department.name departmentname from ( crm_user inner join crm_user_department on crm_user_department.id=crm_user.department_id) inner join crm_user_role on crm_user.role_id =crm_user_role.id ${txt} ORDER BY crm_user.id ${limit}")
 	public List<User> select(@Param("txt") String txt,@Param("limit") String limit);
-	@Select("select crm_user.*,crm_role.name rolename,crm_department.name departmentname from ( crm_user inner join crm_user_department on crm_user_department.id=crm_user.department_id) inner join crm_user_role on crm_user.role_id =crm_user_role.id")
+	@Select("select crm_user.*,crm_user_role.name rolename,crm_user_department.name departmentname from ( crm_user inner join crm_user_department on crm_user_department.id=crm_user.department_id) inner join crm_user_role on crm_user.role_id =crm_user_role.id")
 	public List<User> selectAll();
 	@Insert("insert into crm_user(name,sex,tel,pass,department_id,role_id,status) values(#{name},#{sex},#{tel},#{pass},#{department_id},#{role_id},#{status})")
 	public void insert(User t);
