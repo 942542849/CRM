@@ -17,13 +17,13 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import model.Operator;
+import service.Operator_Service;
 
-import model.User;
-import service.User_Service;
 
 public class UserRealm extends AuthorizingRealm {
 	@Autowired
-	User_Service userService;
+	Operator_Service userService;
 
 	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -48,7 +48,7 @@ public class UserRealm extends AuthorizingRealm {
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken arg0) throws AuthenticationException {
 		UsernamePasswordToken token = (UsernamePasswordToken) arg0;
-		User user = userService.login(new User(token.getUsername(), new String(token.getPassword())));
+		Operator user = userService.login(new Operator(token.getUsername(), new String(token.getPassword())));
 //      String username = token.getUsername();
       // 根据username从数据库查找用户，得到密码
       // 假设找到的用户如下
