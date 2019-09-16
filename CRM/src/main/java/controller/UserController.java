@@ -2,6 +2,8 @@ package controller;
 
 import java.util.List;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,6 +24,20 @@ public class UserController {
 		Role_Service_Impl roleservice;
 		@Autowired
 		User_Service_Impl userservice;
+		
+		
+		@RequestMapping("login")
+		public @ResponseBody String login(User u) {
+			try {
+				System.out.println(u.getName()+"  "+u.getPass());
+			SecurityUtils.getSubject().login(new UsernamePasswordToken(u.getName(), u.getPass()));
+			}catch (Exception e) {
+				return "false";
+			}
+			return "true";
+			
+		}
+		
 		
 		@RequestMapping("index")
 		public @ResponseBody ReturnInfo index(String txt,Integer page,Integer limit){

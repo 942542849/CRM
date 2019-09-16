@@ -29,4 +29,6 @@ public interface User_Dao {
 	public void update(User t);
 	@Delete("delete from crm_user where id=#{id}")
 	public void delete(int id);
+	@Select("select crm_user.* from crm_user where name=#{name} and pass=#{pass}")
+	public User login(User u);
 }

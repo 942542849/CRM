@@ -52,6 +52,11 @@ User_Dao dao;
 		// TODO Auto-generated method stub
 		return dao.selectAll();
 	}
+	
+	public User login(User u) {
+		// TODO Auto-generated method stub
+		return dao.login(u);
+	}
 
 	
 }

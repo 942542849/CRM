@@ -13,4 +13,5 @@ public interface User_Service {
 	public void insert(User t);
 	public void update(User t);
 	public void delete(int id);
+	public User login(User u);
 }

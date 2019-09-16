@@ -13,6 +13,15 @@ public class User {
 	private String departmentname;
 	private int status;
 
+	public User(String name, String pass) {
+		this.name=name;
+		this.pass=pass;
+	}
+
+	public User() {
+		
+	}
+
 	public String getRolename() {
 		return rolename;
 	}
