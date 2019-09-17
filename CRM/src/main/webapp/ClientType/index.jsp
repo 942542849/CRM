@@ -33,8 +33,8 @@
     <div class="layui-input-inline">
       <input type="text" name="txt" lay-verify="title"  autocomplete="off" placeholder="请输入名称" class="layui-input input">
     </div>
-    <button class="layui-btn layui-btn-sm" lay-event="search">查询客户信誉</button>
-    <button class="layui-btn layui-btn-sm" lay-event="add">新增客户信誉</button>
+    <button class="layui-btn layui-btn-sm" lay-event="search">查询客户来源</button>
+    <button class="layui-btn layui-btn-sm" lay-event="add">新增客户来源</button>
   </div>
 </script>
 
@@ -61,7 +61,7 @@
 					fixed : 'right'
 				}, {
 					field : 'name',
-					title : '客户等级',
+					title : '客户来源',
 					width : 280
 				}, {
 					fixed : 'right',
@@ -101,7 +101,7 @@
 								}, "json");
 					});
 				}else{
-					openFrame('Credit_edit.jsp?id='+data.id);
+					openFrame('Clienttype_edit.jsp?id='+data.id);
 				}
 			});
 
@@ -111,7 +111,7 @@
 					reload('demo',{txt : txt});
 				} 
 				else if (obj.event === 'add'){
-					openFrame("Credit_add.jsp");
+					openFrame("Clienttype_add.jsp");
 				}
 			});
 
