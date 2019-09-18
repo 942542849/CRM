@@ -12,11 +12,6 @@ import org.springframework.stereotype.Repository;
 import model.WorkGroup;
 
 
-
-
-
-
-
 @Repository
 public interface WorkGroup_Dao {
 	@Select("select*from c_workgroup where id=#{id}")
