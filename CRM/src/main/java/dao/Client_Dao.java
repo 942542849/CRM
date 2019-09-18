@@ -29,7 +29,7 @@ public interface Client_Dao {
 	public List<Client> selectAll();
 	@Insert("insert into c_client(name,sex,tel,qq,email,address,infos,linkstatu,clientstatu,purposestatu,assessstatu,execstatu,statu,clienttype_id,operatorids,createoperator_id,createdate,src_id,count,comments) values(#{name},#{sex},#{tel},#{qq},#{email},#{address},#{infos},#{linkstatu},#{clientstatu},#{purposestatu},#{assessstatu},#{execstatu},#{statu},#{clienttype_id},#{operatorids},#{createoperator_id},#{createdate},#{src_id},#{count},#{comments})")
 	public void insert(Client t);
-	@Update("update c_client set name=#{name},sex=#{sex},tel=#{tel},qq=#{qq},email=#{email},address=#{address},infos=#{infos},linkstatu=#{linkstatu},clientstatu=#{clientstatu},purposestatu=#{purposestatu},assessstatu=#{assessstatu},execstatu=#{execstatu},statu=#{statu},clienttype_id=#{clienttype_id},operatorids=#{operatorids},createoperator_id=#{createoperator_id},createdate=#{createdate},src_id=#{src_id},count=#{count},comments=#{comments}")
+	@Update("update c_client set name=#{name},sex=#{sex},tel=#{tel},qq=#{qq},email=#{email},address=#{address},infos=#{infos},linkstatu=#{linkstatu},clientstatu=#{clientstatu},purposestatu=#{purposestatu},assessstatu=#{assessstatu},execstatu=#{execstatu},statu=#{statu},clienttype_id=#{clienttype_id},operatorids=#{operatorids},createoperator_id=#{createoperator_id},createdate=#{createdate},src_id=#{src_id},count=#{count},comments=#{comments} where id =#{id}")
 	public void update(Client t);
 	@Delete("delete from c_client where id=#{id}")
 	public void delete(int id);

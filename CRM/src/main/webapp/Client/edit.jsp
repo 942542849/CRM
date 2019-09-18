@@ -147,13 +147,12 @@
     </div>
   </div>
   
-  
-    <div class="layui-form-item">
-    <label class="layui-form-label">创建时间</label>
-    <div class="layui-input-block">
-      <input type="text" name="createdate"  autocomplete="off" placeholder="请输入创建时间" class="layui-input">
+<div class="layui-inline">
+      <label class="layui-form-label">创建时间</label>
+      <div class="layui-input-inline">
+        <input class="layui-input" id="test1" name="createdate" type="text" placeholder="yyyy-MM-dd" >
+      </div>
     </div>
-  </div>
   
     <div class="layui-form-item">
     <label class="layui-form-label">文件</label>
@@ -216,7 +215,15 @@ layui.use(['form',], function(){
 		  });
 });
 
-
+layui.use('laydate', function(){
+	  var laydate = layui.laydate;
+	  
+	  //常规用法
+	  laydate.render({
+	    elem: '#test1'
+	    ,trigger: 'click'
+	  });
+});
 
 
 	
