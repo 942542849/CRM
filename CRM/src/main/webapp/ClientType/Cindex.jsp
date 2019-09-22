@@ -101,7 +101,7 @@
 								}, "json");
 					});
 				}else{
-					openFrame('Clienttype_edit.jsp?id='+data.id);
+					openFrame('ClientType_edit.jsp?id='+data.id);
 				}
 			});
 
@@ -111,7 +111,7 @@
 					reload('demo',{txt : txt});
 				} 
 				else if (obj.event === 'add'){
-					openFrame("Clienttype_add.jsp");
+					openFrame("ClientType_add.jsp");
 				}
 			});
 
