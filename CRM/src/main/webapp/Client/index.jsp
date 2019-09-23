@@ -97,6 +97,15 @@
 					width : 80,
 					
 				},
+				 {
+					field : 'operatornames',
+					title : '负责人总览',
+					width : 80
+				}, {
+					field : 'operatorids',
+					title : '负责人总览',
+					width : 80
+				},
 				{
 					field : 'linkstatuname',
 					title : '联通状态',
@@ -130,10 +139,6 @@
 				{
 					field : 'clienttypename',
 					title : '客户类型',
-					width : 80
-				}, {
-					field : 'operatorids',
-					title : '负责人总览',
 					width : 80
 				},
 				{
@@ -199,7 +204,7 @@
 								}, "json");
 					});
 				}else{
-					openFrame('edit.jsp?id='+data.id);
+					openFrame('edit.jsp?id='+data.id,'修改',['800px','600px']);
 				}
 			});
 
@@ -208,7 +213,7 @@
 					var txt = $(event.target).prev().find("input").val();
 					reload('demo',{txt : txt});
 				} else if(obj.event === 'add') {
-					openFrame("add.jsp");
+					openFrame("add.jsp",'新增',['800px','600px']);
 				}
 			});
 

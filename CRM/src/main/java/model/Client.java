@@ -36,7 +36,7 @@ public class Client {
 	private int count;
 	private String comments;
 
-
+	private String operatornames;
 	
 	public int getId() {
 		return id;
@@ -212,6 +212,12 @@ public class Client {
 	public static String[]status= {"正常","公共","资料不全","无效"};
 	public String getStatuname() {
 		return status[statu];
+	}
+	public String getOperatornames() {
+		return operatornames;
+	}
+	public void setOperatornames(String operatornames) {
+		this.operatornames = operatornames;
 	}
 
 }

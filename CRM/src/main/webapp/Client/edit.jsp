@@ -9,12 +9,18 @@
 <script type="text/javascript" src="../show/lib/layui/layui.all.js"></script>
 <script src="../show/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="../show/js/my.js"></script>
+<script type="text/javascript" src="../show/js/tableSelect.js"></script>
 
 <title></title>
 </head>
 <body>
 <style>
 .layui-input{width:200px;}
+.layui-input-block{width:200px;}
+.layui-layer {
+	width: 400px;
+	height: 500px;
+}
 </style>
 <form class="layui-form" lay-filter="myform">
 <input type="hidden" name="id" >
@@ -69,6 +75,17 @@
       <input type="text" name="infos"  autocomplete="off" placeholder="请输入infos" class="layui-input">
     </div>
   </div>
+    
+    <div class="layui-form-item">
+		<label class="layui-form-label">处理人</label>
+		<div class="layui-input-block">
+			<input type="text" name="operatornames" readonly="readonly"
+				autocomplete="off" placeholder="请输入处理人" class="layui-input"
+				id="opids" ts-selected=""> <input type="hidden"
+				name="operatorids">
+		</div>
+	</div>
+    
     
      <div class="layui-form-item">
     <label class="layui-form-label">联通状态</label>
@@ -132,13 +149,10 @@
   </div>
   
   
-     <div class="layui-form-item">
-    <label class="layui-form-label">负责人总览</label>
-    <div class="layui-input-block">
-      <input type="text" name="operatorids"  autocomplete="off" placeholder="请输入所有负责人" class="layui-input">
-    </div>
-  </div>
-  
+   
+	
+
+	
   <div class="layui-form-item">
     <label class="layui-form-label">创建人</label>
     <div class="layui-input-block">
@@ -147,7 +161,7 @@
     </div>
   </div>
   
-<div class="layui-inline">
+<div class="layui-form-item">
       <label class="layui-form-label">创建时间</label>
       <div class="layui-input-inline">
         <input class="layui-input" id="test1" name="createdate" type="text" placeholder="yyyy-MM-dd" >
@@ -214,6 +228,57 @@ layui.use(['form',], function(){
 		    return false;
 		  });
 });
+
+var tableSelect = layui.tableSelect;
+tableSelect.render({
+	elem : '#opids', //定义输入框input对象 必填
+	checkedKey : 'name', //表格的唯一建值，非常重要，影响到选中状态 必填
+	searchKey : 'txt', //搜索输入框的name值 默认keyword
+	searchPlaceholder : '关键词搜索', //搜索输入框的提示文字 默认关键词搜索
+	table : { //定义表格参数，与LAYUI的TABLE模块一致，只是无需再定义表格elem
+		url : '../Operator/index',
+		cols : [ [ {
+			type : 'checkbox'
+		}, {
+			field : 'id',
+			title : 'ID',
+			width : 100,
+		}, {
+			field : 'name',
+			title : '用户名',
+			width : 100
+		} ,{
+			field : 'tel',
+			title : '联系电话',
+			width : 100
+		} , {
+			field : 'groupname',
+			title : '用户名',
+			width : 100
+		} ] ],
+		parseData : function(res) {
+			return {
+				"code" : res.code, //解析接口状态
+				"msg" : res.msg,//解析提示文本
+				"count" : res.count,//解析数据长度
+				"data" : res.list
+			//解析数据列表
+			}
+		}
+	},
+	done : function(elem, data) {
+		//选择完后的回调，包含2个返回值 elem:返回之前input对象；data:表格返回的选中的数据 []
+		//拿到data[]后 就按照业务需求做想做的事情啦~比如加个隐藏域放ID...
+		var NEWJSON = []
+		var NEWJSON1 = []
+		layui.each(data.data, function(index, item) {
+			NEWJSON.push(item.name);
+			NEWJSON1.push(item.id);
+		})
+		elem.val(NEWJSON.join(","))
+		$('[name=operatorids]').val(NEWJSON1.join(","))
+	}
+})
 
 layui.use('laydate', function(){
 	  var laydate = layui.laydate;

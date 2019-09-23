@@ -56,40 +56,40 @@
 				{
 					field : 'id',
 					title : 'ID',
-					width : 80,
+					width : 95,
 					sort : true,
 				}, {
 					field : 'name',
 					title : '用户名',
-					width : 180
+					width : 176
 				}, {
 					field : 'tel',
 					title : '联系电话',
-					width : 80
+					width : 178
 				}, 
 				{
 					field : 'pass',
 					title : '密码',
-					width : 80,
+					width : 175,
 					
 				},
 				{
 					field : 'groupname',
 					title : '用户属组',
-					width : 80
+					width : 182
 				}, {
 					field : 'powername',
 					title : '角色',
-					width : 80
+					width : 156
 				},{
 					field : 'statusname',
 					title : '状态',
-					width : 80
+					width : 166
 				},{
 					fixed : 'right',
 					title : '操作',
 					toolbar : '#barDemo',
-					width : 150,
+					width : 166,
 					align : 'center'
 				}
 
