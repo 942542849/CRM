@@ -6,19 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import dao.NowClient_Dao;
+import model.NowClient;
 
-import dao.Operator_Dao;
-
-import model.Operator;
-
-import service.Operator_Service;
-
+import service.NowClient_Service;
 import utils.ReturnInfo;
 @Service
 
-public class Operator_Service_Impl implements Operator_Service{
+public class NowClient_Service_Impl implements NowClient_Service{
 @Autowired
-Operator_Dao dao;
+NowClient_Dao dao;
 	public ReturnInfo select(String txt,Integer page,Integer max) {
 		boolean canpage=page!=null;
 		ReturnInfo info = new ReturnInfo();
@@ -27,12 +24,17 @@ Operator_Dao dao;
 		return info;
 	}
 
-	public void insert(Operator t) {
+	public List<NowClient> NowClient(String where,String limit) {
+	
+		return dao.NowClient(where, limit);
+	}
+
+	
+	public void insert(NowClient t) {
 		dao.insert(t);
 		
 	}
-
-	public void update(Operator t) {
+	public void update(NowClient t) {
 		dao.update(t);
 	}
 
@@ -40,7 +42,7 @@ Operator_Dao dao;
 		dao.delete(id);
 	}
 
-	public Operator selectById(int id) {
+	public NowClient selectById(int id) {
 		return dao.selectById(id);
 	}
 
@@ -49,18 +51,11 @@ Operator_Dao dao;
 		return dao.selectCount(txt);
 	}
 
-	public List<Operator> selectAll() {
-		// TODO Auto-generated method stub
+	public List<NowClient> selectAll() {
 		return dao.selectAll();
 	}
-	
-	public Operator login(Operator u) {
-		// TODO Auto-generated method stub
-		return dao.login(u);
-	}
 
-	public Operator selectByTel(String tel) {
-		return dao.selectByTel(tel);
-	}
+
+
 	
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html >
 <html>
 <head>
@@ -25,8 +25,8 @@
 <body>
 	<table id="demo" lay-filter="test"></table>
 	<script type="text/html" id="barDemo">
-<a class="layui-btn  layui-btn-xs" lay-event="edit">分配</a>
-
+<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 	<script type="text/html" id="toolbarDemo">
   <div class="layui-btn-container">
@@ -34,11 +34,13 @@
       <input type="text" name="txt" lay-verify="title"  autocomplete="off" placeholder="请输入名称" class="layui-input input">
     </div>
     <button class="layui-btn layui-btn-sm" lay-event="search">查询客户</button>
+    <button class="layui-btn layui-btn-sm" lay-event="add">新增客户</button>
   </div>
 </script>
 
-	<script>
-	
+	<script type="text/javascript">
+		var tel = ${currentOperator.tel};
+		//alert("aaa");
 		layui.use('table', function() {
 			var table = layui.table;
 
@@ -46,8 +48,9 @@
 			table.render({
 				elem : '#demo',
 				height : 462,
-				url : 'nohead.action' //数据接口
+				url : 'NowClient.action' //数据接口
 				,
+				where:{tel:tel},
 				toolbar : '#toolbarDemo',
 				page : true //开启分页
 				,
@@ -203,7 +206,7 @@
 								}, "json");
 					});
 				}else{
-					openFrame('edit.jsp?id='+data.id,'分配客户',['800px','600px']);
+					openFrame('edit.jsp?id='+data.id,'修改',['800px','600px']);
 				}
 			});
 

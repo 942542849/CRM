@@ -8,15 +8,16 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import model.NoheadClient;
+import model.NowClient;
+import model.Operator;
 import service.ClientType_Service;
-import service.NoheadClient_Service;
+import service.NowClient_Service;
 import service.Operator_Service;
 import service.Src_Service;
 import utils.ReturnInfo;
 @Controller
-@RequestMapping("NoheadClient")
-public class NoheadClientController{
+@RequestMapping("NowClient")
+public class NowClientController{
 		
 		@Autowired
 		ClientType_Service ctservice;
@@ -25,7 +26,7 @@ public class NoheadClientController{
 		@Autowired
 		Src_Service srcservice;
 		@Autowired
-		NoheadClient_Service  nclientservice;
+		NowClient_Service  clientservice;
 		
 		@RequestMapping("index")
 		public @ResponseBody ReturnInfo index(String txt,Integer page,Integer limit){
@@ -33,66 +34,75 @@ public class NoheadClientController{
 			if(txt!=null) {
 				whera="where c_client.name like '%"+txt+"%'";
 			}
-			return nclientservice.select(whera,page,limit);
+			return clientservice.select(whera,page,limit);
 		}
-		@RequestMapping("nohead")
-		public @ResponseBody ReturnInfo index1(String txt,Integer page,Integer limit){
-			String whera="";
-			if(txt!=null) {
-				whera="and c_client.name like '%"+txt+"%'";
-			}
-			return nclientservice.Nohead(whera,page,limit);
+		
+		@RequestMapping("NowClient")
+		public @ResponseBody ReturnInfo index2(String tel,String txt,Integer page,Integer limit) {
+			ReturnInfo info = new ReturnInfo();
+			String where="";
+			Operator u = opservice.selectByTel(tel);
+			where="where c_client.operatornames = ''";
+			if(u!=null)	where="where c_client.operatornames like '%"+u.getName()+"%' and c_client.count = 0";
+			if(txt!=null) where=where+" and c_client.name like '%"+txt+"%'";
+			System.out.println(where);
+			String lim = info.getLimit(page, limit);
+			info.setCount(clientservice.selectCount(where));
+			info.setList(clientservice.NowClient(where, lim));
+			return info;
 		}
+		
+		
 		
 		
 		@RequestMapping("delete")
 		public @ResponseBody String delete(int id){
-			nclientservice.delete(id);
+			clientservice.delete(id);
 			return "{\"status\":1}";
 		}
 		@RequestMapping("insert")
-		public @ResponseBody String insert(NoheadClient b,ModelMap m){
+		public @ResponseBody String insert(NowClient b,ModelMap m){
 
-			nclientservice.insert(b);
+			clientservice.insert(b);
 			return "{\"status\":1}";
 		}
 		@RequestMapping("edit")
-		public @ResponseBody NoheadClient edit(int id){
-			return nclientservice.selectById(id);
+		public @ResponseBody NowClient edit(int id){
+			return clientservice.selectById(id);
 		}
 		@RequestMapping("update")
-		public @ ResponseBody String update(NoheadClient b,ModelMap m) {
-			nclientservice.update(b);
+		public @ ResponseBody String update(NowClient b,ModelMap m) {
+			clientservice.update(b);
 			return "{\"status\":1}";
 		}
 		
 		@RequestMapping("getSexs")
 		public @ResponseBody String[] getSexs() {
-			return NoheadClient.sexs;
+			return NowClient.sexs;
 		}
 		@RequestMapping("getLinkstatus")
 		public @ResponseBody String[] getLinkstatus() {
-			return NoheadClient.linkstatus;
+			return NowClient.linkstatus;
 		}
 		@RequestMapping("getClientstatus")
 		public @ResponseBody String[] getClientstatus() {
-			return NoheadClient.clientstatus;
+			return NowClient.clientstatus;
 		}
 		@RequestMapping("getPurposestatus")
 		public @ResponseBody String[] getPurposestatus() {
-			return NoheadClient.purposestatus;
+			return NowClient.purposestatus;
 		}
 		@RequestMapping("getAssessstatus")
 		public @ResponseBody String[] getAssessstatus() {
-			return NoheadClient.assessstatus;
+			return NowClient.assessstatus;
 		}
 		@RequestMapping("getExecstatus")
 		public @ResponseBody String[] getExecstatus() {
-			return NoheadClient.execstatus;
+			return NowClient.execstatus;
 		}
 		@RequestMapping("getStatus")
 		public @ResponseBody String[] getStatus() {
-			return NoheadClient.status;
+			return NowClient.status;
 		}
 		
 		

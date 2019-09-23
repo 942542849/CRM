@@ -2,6 +2,8 @@ package controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +25,14 @@ public class OperatorController {
 		
 		
 		@RequestMapping("login")
-		public @ResponseBody String login(Operator u) {
+		public @ResponseBody String login(Operator u,HttpSession s) {
 			try {
-				
 				SecurityUtils.getSubject().login(new UsernamePasswordToken(u.getTel(), u.getPass()));
 			}catch (Exception e) {
 				return "false";
 			}
+			s.setAttribute("currentOperator", u);
+			System.out.println(s.getAttribute("currentOperator"));
 			return "true";
 			
 		}

@@ -14,4 +14,5 @@ public interface Operator_Service {
 	public void update(Operator t);
 	public void delete(int id);
 	public Operator login(Operator u);
+	public Operator selectByTel(String tel);
 }
