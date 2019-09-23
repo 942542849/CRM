@@ -30,6 +30,7 @@ NoheadClient_Dao dao;
 		if(canpage)info.setCount(dao.selectCount(txt));
 		return info;
 	}
+	
 	public void insert(NoheadClient t) {
 		dao.insert(t);
 		
