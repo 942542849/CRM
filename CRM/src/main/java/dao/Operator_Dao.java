@@ -33,4 +33,5 @@ public interface Operator_Dao {
 	public void delete(int id);
 	@Select("select * from c_operator where tel = #{tel} and pass = #{pass}")
 	public Operator login(Operator u);
+
 }

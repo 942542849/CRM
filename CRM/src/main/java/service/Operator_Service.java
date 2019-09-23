@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 
+
 import model.Operator;
 import utils.ReturnInfo;
 
@@ -14,4 +15,5 @@ public interface Operator_Service {
 	public void update(Operator t);
 	public void delete(int id);
 	public Operator login(Operator u);
+
 }

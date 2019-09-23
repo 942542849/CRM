@@ -1,6 +1,9 @@
 package controller;
-
+  
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -9,11 +12,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+
 import model.Operator;
 import service_Impl.Operator_Service_Impl;
 import service_Impl.WorkGroup_Service_Impl;
+
 import utils.ReturnInfo;
 @Controller
+
 @RequestMapping("Operator")
 public class OperatorController {
 		@Autowired
@@ -30,10 +38,16 @@ public class OperatorController {
 			}catch (Exception e) {
 				return "false";
 			}
+			
 			return "true";
 			
 		}
 		
+		@RequestMapping("getUser")
+		public @ResponseBody Operator getUser(HttpSession s, HttpServletRequest req) {
+			Operator user = (Operator) s.getAttribute("user");
+			return user;
+		}
 		
 		@RequestMapping("index")
 		public @ResponseBody ReturnInfo index(String txt,Integer page,Integer limit){
