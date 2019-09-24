@@ -27,6 +27,15 @@
     </div>
     </div>
     
+    
+	<div class="layui-form-item">
+    <label class="layui-form-label">客户名称</label>
+    <div class="layui-input-block">
+      <select name="execoperator_id" >
+      </select>
+    </div>
+    </div>
+    
      <div class="layui-form-item">
     <label class="layui-form-label">联通状态</label>
     <div class="layui-input-block">
@@ -126,6 +135,7 @@ var id="${param.id}";
 $.post("edit.action",{id:id}, function(json) {
 	render('myform', json);
 	getlist("getClients.action",{},"[name=client_id]",json.client_id);
+	getlist("getExecoperators.action",{},"[name=execoperator_id]",json.execoperator_id);
 	getarray("getLinkstatus.action",{},"[name=linkstatu]",json.linkstatu);
 	getarray("getClientstatus.action",{},"[name=clientstatu]",json.clientstatu);
 	getarray("getPurposestatus.action",{},"[name=purposestatu]",json.purposestatu);

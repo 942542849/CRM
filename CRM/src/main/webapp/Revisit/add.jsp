@@ -26,6 +26,14 @@
     </div>
     </div>
 
+<div class="layui-form-item">
+    <label class="layui-form-label">负责人名称</label>
+    <div class="layui-input-block">
+      <select name="execoperator_id" >
+      </select>
+    </div>
+    </div>
+
     
      <div class="layui-form-item">
     <label class="layui-form-label">联通状态</label>
@@ -120,7 +128,7 @@
 </form>
 
 <script type="text/javascript">
-
+getlist("getExecoperators.action",{},"[name=execoperator_id]",-1);
 getarray("getLinkstatus.action",{},"[name=linkstatu]",-1);
 getarray("getClientstatus.action",{},"[name=clientstatu]",-1);
 getarray("getPurposestatus.action",{},"[name=purposestatu]",-1);

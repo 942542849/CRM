@@ -168,7 +168,6 @@
 
 <script type="text/javascript">
 var client_id="${param.client_id}";
-alert(client_id);
 function init(){
 	$.post("../getAllById.action",{client_id:client_id}, function(json) {
 		render('myform', json);

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import model.Revisit;
 
 import service.Client_Service;
-
+import service.Operator_Service;
 import service.Revisit_Service;
 
 import utils.ReturnInfo;
@@ -21,6 +21,8 @@ public class RevisitController{
 		
 		@Autowired
 		Client_Service cservice;
+		@Autowired
+		Operator_Service opservice;
 	
 		@Autowired
 		Revisit_Service reservice;
@@ -86,6 +88,11 @@ public class RevisitController{
 		@RequestMapping("getClients")
 		public @ResponseBody List getClients() {
 			return cservice.selectAll();
+		}
+		
+		@RequestMapping("getExecoperators")
+		public @ResponseBody List getExecoperators() {
+			return opservice.selectAll();
 		}
 	
 

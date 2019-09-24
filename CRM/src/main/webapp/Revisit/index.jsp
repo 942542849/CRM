@@ -63,6 +63,11 @@
 					title : '客户姓名',
 					width : 80
 				}, 
+				 {
+					field : 'execoperatorname',
+					title : '负责人姓名',
+					width : 80
+				}, 
 				{
 					field : 'linkstatuname',
 					title : '联通状态',
