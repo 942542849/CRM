@@ -13,6 +13,26 @@ public class Revisit {
 	private int client_id;
 	private String clientname;
 	
+	private int execoperator_id;
+	private String execoperatorname;
+	
+	
+	public int getExecoperator_id() {
+		return execoperator_id;
+	}
+	public void setExecoperator_id(int execoperator_id) {
+		this.execoperator_id = execoperator_id;
+	}
+	public String getExecoperatorname() {
+		return execoperatorname;
+	}
+	public void setExecoperatorname(String execoperatorname) {
+		this.execoperatorname = execoperatorname;
+	}
+
+
+
+
 	private int linkstatu;
 	private int clientstatu;
 	private int purposestatu;

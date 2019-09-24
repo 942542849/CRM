@@ -29,4 +29,11 @@ public interface Reserved_Dao {
 	public void update(Reserved t);
 	@Delete("delete from c_reserved where id=#{id}")
 	public void delete(int id);
+	
+	
+	@Select("select count(1)  from ((c_reserved INNER JOIN c_operator on c_reserved.operator_id=c_operator.id)INNER JOIN c_operator m on c_reserved.execoperator_id=m.id)inner join c_client on c_reserved.client_id=c_client.id ${txt}")
+	public int selectMyCount(@Param("txt")String where);
+
+	@Select("select c_reserved.*,c_client.name clientname,c_operator.name operatorname,m.name execoperatorname FROM((c_reserved INNER JOIN c_operator on c_reserved.operator_id=c_operator.id)INNER JOIN c_operator m on c_reserved.execoperator_id=m.id)inner join c_client on c_reserved.client_id=c_client.id ${txt} ${lim}")
+	public List<Reserved> getMyreserved(@Param("txt")String where, @Param("lim")String limit);
 }

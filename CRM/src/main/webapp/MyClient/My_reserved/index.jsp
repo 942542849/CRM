@@ -1,0 +1,142 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<!DOCTYPE html >
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="../../show/lib/layui/css/layui.css" rel="stylesheet">
+<script type="text/javascript" src="../../show/lib/layui/layui.all.js"></script>
+<script src="../../show/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="../../show/js/my.js"></script>
+<title></title>
+<style type="text/css">
+.input {
+	font-size: 16px; width : 200px;
+	height: 30px;
+	margin-top: -10px;
+	margin-right: 10px;
+	width: 200px;
+}
+
+.layui-form-select{width:200px;
+}
+</style>
+</head>
+<body>
+	<table id="demo" lay-filter="test"></table>
+	<script type="text/html" id="barDemo">
+<a class="layui-btn layui-btn-xs" lay-event="record">回访记录</a>
+<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="infos">客户详情</a>
+</script>
+	<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+    <div class="layui-input-inline">
+      <input type="text" name="txt" lay-verify="title"  autocomplete="off" placeholder="请输入名称" class="layui-input input">
+    </div>
+    <button class="layui-btn layui-btn-sm" lay-event="search">查询</button>
+  </div>
+</script>
+
+	<script type="text/javascript">
+	
+	var tel = ${currentOperator.tel};
+	
+		layui.use('table', function() {
+			var table = layui.table;
+
+			//第一个实例
+			table.render({
+				elem : '#demo',
+				height : 462,
+				url : '../Myreserved.action' //数据接口
+				,
+				where:{tel:tel},
+				toolbar : '#toolbarDemo',
+				page : true //开启分页
+				,
+				cols : [ [ //表头
+				{
+					field : 'id',
+					title : 'ID',
+					width : 100,
+					sort : true,
+				}, {
+					field : 'revisit_id',
+					title : '回访表ID',
+					width : 150
+				},{
+					field : 'clientname',
+					title : '客户名称',
+					width : 150
+				},{
+					field : 'operatorname',
+					title : '创建人',
+					width : 150
+				},{
+					field : 'createdate',
+					title : '创建时间',
+					width : 150
+				},{
+					field : 'date',
+					title : '预约时间',
+					width : 150
+				},{
+					field : 'typename',
+					title : '预约类型',
+					width : 150
+				},{
+					field : 'statuname',
+					title : '状态',
+					width : 150
+				},{
+					field : 'execstatuname',
+					title : '执行状态',
+					width : 150
+				}, {
+					field : 'result',
+					title : '结果',
+					width : 150
+				}, {
+					fixed : 'right',
+					title : '操作',
+					toolbar : '#barDemo',
+					width : 200,
+					align : 'center'
+				}
+
+				] ],
+				parseData : function(res) {
+					return {
+						"code" : res.code,
+						"msg" : res.msg,
+						"count" : res.count,
+						"data" : res.list
+					}
+				}
+			});
+			
+			
+
+			//obj 行      obj.data 行数据    data.id 列
+			//test  是table的lay-filter="test" 属性
+			table.on('tool(test)', function(obj) {
+				var data = obj.data;
+				if (obj.event === 'infos') { ///lay-event 属性
+					openFrame('./infos.jsp?client_id='+data.client_id,'客户详情',['900px', '100%']);
+				}else{
+					openFrame('./record.jsp?execoperator_id='+data.execoperator_id,'回访记录',['900px', '100%']);
+				}
+			});
+
+			table.on('toolbar(test)', function(obj) {
+				if (obj.event === 'search') {
+					var txt = $(event.target).prev().find("input").val();
+					reload('demo',{txt : txt});
+				}
+			});
+
+		});
+		
+	</script>
+</body>
+</html>

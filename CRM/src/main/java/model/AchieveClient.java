@@ -1,7 +1,7 @@
 package model;
 
 
-public class NowClient {
+public class AchieveClient {
 	private int id;
 	private String name;
 	private int sex;

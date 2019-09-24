@@ -13,4 +13,7 @@ public interface Revisit_Service {
 	public void insert(Revisit t);
 	public void update(Revisit t);
 	public void delete(int id);
+	
+	public int selectMyCount(String where);
+	public List<Revisit> getMyrevisit(String where, String lim);
 }

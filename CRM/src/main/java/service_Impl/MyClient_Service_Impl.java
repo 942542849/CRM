@@ -5,18 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-import dao.NowClient_Dao;
-import model.NowClient;
-
-import service.NowClient_Service;
+import dao.MyClient_Dao;
+import model.MyClient;
+import service.MyClient_Service;
 import utils.ReturnInfo;
 @Service
 
-public class NowClient_Service_Impl implements NowClient_Service{
+public class MyClient_Service_Impl implements MyClient_Service{
 @Autowired
-NowClient_Dao dao;
-	public ReturnInfo select(String txt,Integer page,Integer max) {
+MyClient_Dao dao;
+	public ReturnInfo select(String txt,Integer page,Integer max) {  
 		boolean canpage=page!=null;
 		ReturnInfo info = new ReturnInfo();
 		info.setList(dao.select(txt,ReturnInfo.getLimit(page, max)));
@@ -24,17 +22,17 @@ NowClient_Dao dao;
 		return info;
 	}
 
-	public List<NowClient> NowClient(String where,String limit) {
+	public List<MyClient> NowClient(String where,String limit) {
 	
 		return dao.NowClient(where, limit);
 	}
 
 	
-	public void insert(NowClient t) {
+	public void insert(MyClient t) {
 		dao.insert(t);
 		
 	}
-	public void update(NowClient t) {
+	public void update(MyClient t) {
 		dao.update(t);
 	}
 
@@ -42,7 +40,7 @@ NowClient_Dao dao;
 		dao.delete(id);
 	}
 
-	public NowClient selectById(int id) {
+	public MyClient selectById(int id) {
 		return dao.selectById(id);
 	}
 
@@ -51,11 +49,19 @@ NowClient_Dao dao;
 		return dao.selectCount(txt);
 	}
 
-	public List<NowClient> selectAll() {
+	public List<MyClient> selectAll() {
 		return dao.selectAll();
 	}
 
+	public int remove(MyClient u) {
+		// TODO Auto-generated method stub
+		return dao.remove(u);
+	}
 
+	public MyClient getAllById(int client_id) {
+		// TODO Auto-generated method stub
+		return dao.getAllById(client_id);
+	}
 
 	
 }

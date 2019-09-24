@@ -13,4 +13,6 @@ public interface Reserved_Service {
 	public void insert(Reserved t);
 	public void update(Reserved t);
 	public void delete(int id);
+	public int selectMyCount(String where);
+	public List<Reserved> getMyreserved(String where, String lim);
 }

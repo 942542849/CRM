@@ -8,16 +8,15 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import model.NowClient;
-import model.Operator;
+import model.AchieveClient;
+import service.AchieveClient_Service;
 import service.ClientType_Service;
-import service.NowClient_Service;
 import service.Operator_Service;
 import service.Src_Service;
 import utils.ReturnInfo;
 @Controller
-@RequestMapping("NowClient")
-public class NowClientController{
+@RequestMapping("AchieveClient")
+public class AchieveClientController{
 		
 		@Autowired
 		ClientType_Service ctservice;
@@ -26,7 +25,7 @@ public class NowClientController{
 		@Autowired
 		Src_Service srcservice;
 		@Autowired
-		NowClient_Service  clientservice;
+		AchieveClient_Service  nclientservice;
 		
 		@RequestMapping("index")
 		public @ResponseBody ReturnInfo index(String txt,Integer page,Integer limit){
@@ -34,75 +33,66 @@ public class NowClientController{
 			if(txt!=null) {
 				whera="where c_client.name like '%"+txt+"%'";
 			}
-			return clientservice.select(whera,page,limit);
+			return nclientservice.select(whera,page,limit);
 		}
-		
-		@RequestMapping("NowClient")
-		public @ResponseBody ReturnInfo index2(String tel,String txt,Integer page,Integer limit) {
-			ReturnInfo info = new ReturnInfo();
-			String where="";
-			Operator u = opservice.selectByTel(tel);
-			where="where c_client.operatornames = ''";
-			if(u!=null)	where="where c_client.operatornames like '%"+u.getName()+"%' and c_client.count = 0";
-			if(txt!=null) where=where+" and c_client.name like '%"+txt+"%'";
-			System.out.println(where);
-			String lim = info.getLimit(page, limit);
-			info.setCount(clientservice.selectCount(where));
-			info.setList(clientservice.NowClient(where, lim));
-			return info;
+		@RequestMapping("Achieve")
+		public @ResponseBody ReturnInfo index1(String txt,Integer page,Integer limit){
+			String whera="";
+			if(txt!=null) {
+				whera="and c_client.name like '%"+txt+"%'";
+			}
+			return nclientservice.Achieve(whera,page,limit);
 		}
-		
-		
 		
 		
 		@RequestMapping("delete")
 		public @ResponseBody String delete(int id){
-			clientservice.delete(id);
+			nclientservice.delete(id);
 			return "{\"status\":1}";
 		}
 		@RequestMapping("insert")
-		public @ResponseBody String insert(NowClient b,ModelMap m){
+		public @ResponseBody String insert(AchieveClient b,ModelMap m){
 
-			clientservice.insert(b);
+			nclientservice.insert(b);
 			return "{\"status\":1}";
 		}
 		@RequestMapping("edit")
-		public @ResponseBody NowClient edit(int id){
-			return clientservice.selectById(id);
+		public @ResponseBody AchieveClient edit(int id){
+			return nclientservice.selectById(id);
 		}
 		@RequestMapping("update")
-		public @ ResponseBody String update(NowClient b,ModelMap m) {
-			clientservice.update(b);
+		public @ ResponseBody String update(AchieveClient b,ModelMap m) {
+			nclientservice.update(b);
 			return "{\"status\":1}";
 		}
 		
 		@RequestMapping("getSexs")
 		public @ResponseBody String[] getSexs() {
-			return NowClient.sexs;
+			return AchieveClient.sexs;
 		}
 		@RequestMapping("getLinkstatus")
 		public @ResponseBody String[] getLinkstatus() {
-			return NowClient.linkstatus;
+			return AchieveClient.linkstatus;
 		}
 		@RequestMapping("getClientstatus")
 		public @ResponseBody String[] getClientstatus() {
-			return NowClient.clientstatus;
+			return AchieveClient.clientstatus;
 		}
 		@RequestMapping("getPurposestatus")
 		public @ResponseBody String[] getPurposestatus() {
-			return NowClient.purposestatus;
+			return AchieveClient.purposestatus;
 		}
 		@RequestMapping("getAssessstatus")
 		public @ResponseBody String[] getAssessstatus() {
-			return NowClient.assessstatus;
+			return AchieveClient.assessstatus;
 		}
 		@RequestMapping("getExecstatus")
 		public @ResponseBody String[] getExecstatus() {
-			return NowClient.execstatus;
+			return AchieveClient.execstatus;
 		}
 		@RequestMapping("getStatus")
 		public @ResponseBody String[] getStatus() {
-			return NowClient.status;
+			return AchieveClient.status;
 		}
 		
 		

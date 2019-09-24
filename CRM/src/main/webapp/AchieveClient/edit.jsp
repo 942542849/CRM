@@ -28,175 +28,62 @@
  <div class="layui-form-item">
     <label class="layui-form-label">联系人名称</label>
     <div class="layui-input-block">
-      <input type="text" name="name"  autocomplete="off" placeholder="请输入姓名" class="layui-input">
+      <input type="text" name="name" readonly="readonly" autocomplete="off" placeholder="请输入姓名" class="layui-input">
+    </div>
+  </div>
+
+     <div class="layui-form-item">
+    <label class="layui-form-label">联系人电话</label>
+    <div class="layui-input-block">
+      <input type="text" name="tel" readonly="readonly" autocomplete="off" placeholder="请输入电话" class="layui-input">
     </div>
   </div>
   
    <div class="layui-form-item">
-    <label class="layui-form-label">性别</label>
+    <label class="layui-form-label">联系人qq</label>
     <div class="layui-input-block">
-      <select name="sex" >
-      </select>
-    </div>
-    </div>
-    
-    
-     <div class="layui-form-item">
-    <label class="layui-form-label">电话</label>
-    <div class="layui-input-block">
-      <input type="text" name="tel"  autocomplete="off" placeholder="请输入电话" class="layui-input">
-    </div>
-  </div>
-  
-   <div class="layui-form-item">
-    <label class="layui-form-label">qq</label>
-    <div class="layui-input-block">
-      <input type="text" name="qq"  autocomplete="off" placeholder="请输入qq" class="layui-input">
+      <input type="text" name="qq"  readonly="readonly" autocomplete="off" placeholder="请输入qq" class="layui-input">
     </div>
   </div>
   
      <div class="layui-form-item">
-    <label class="layui-form-label">email</label>
+    <label class="layui-form-label">联系人邮箱</label>
     <div class="layui-input-block">
-      <input type="text" name="email"  autocomplete="off" placeholder="请输入email" class="layui-input">
+      <input type="text" name="email" readonly="readonly"  autocomplete="off" placeholder="请输入email" class="layui-input">
     </div>
   </div>
 
   <div class="layui-form-item">
-    <label class="layui-form-label">address</label>
+    <label class="layui-form-label">联系人地址</label>
     <div class="layui-input-block">
-      <input type="text" name="address"  autocomplete="off" placeholder="请输入address" class="layui-input">
+      <input type="text" name="address" readonly="readonly" autocomplete="off" placeholder="请输入address" class="layui-input">
     </div>
   </div>
     
       <div class="layui-form-item">
-    <label class="layui-form-label">infos</label>
+    <label class="layui-form-label">联系人备注</label>
     <div class="layui-input-block">
-      <input type="text" name="infos"  autocomplete="off" placeholder="请输入infos" class="layui-input">
+      <input type="text" name="infos" readonly="readonly" autocomplete="off" placeholder="请输入infos" class="layui-input">
     </div>
   </div>
     
+  
     <div class="layui-form-item">
-		<label class="layui-form-label">处理人</label>
+		<label class="layui-form-label">分配处理人</label>
 		<div class="layui-input-block">
 			<input type="text" name="operatornames" readonly="readonly"
-				autocomplete="off" placeholder="请输入处理人" class="layui-input"
+				autocomplete="off" placeholder="请分配处理人" class="layui-input"
 				id="opids" ts-selected=""> <input type="hidden"
 				name="operatorids">
 		</div>
 	</div>
     
-    
-     <div class="layui-form-item">
-    <label class="layui-form-label">联通状态</label>
-    <div class="layui-input-block">
-      <select name="linkstatu" >
-      </select>
-    </div>
-    </div>
-    
-    
-     <div class="layui-form-item">
-    <label class="layui-form-label">客户状态</label>
-    <div class="layui-input-block">
-      <select name="clientstatu" >
-      </select>
-    </div>
-    </div>
-    
-    
-     <div class="layui-form-item">
-    <label class="layui-form-label">意向状态</label>
-    <div class="layui-input-block">
-      <select name="purposestatu" >
-      </select>
-    </div>
-    </div>
-    
-     <div class="layui-form-item">
-    <label class="layui-form-label">评估状态 </label>
-    <div class="layui-input-block">
-      <select name="assessstatu" >
-      </select>
-    </div>
-    </div>
-    
-     <div class="layui-form-item">
-    <label class="layui-form-label">处理状态</label>
-    <div class="layui-input-block">
-      <select name="execstatu" >
-      </select>
-    </div>
-    </div>
-    
-     <div class="layui-form-item">
-    <label class="layui-form-label">status</label>
-    <div class="layui-input-block">
-      <select name="statu" >
-      </select>
-    </div>
-    </div>
-    
-    
-
-    
-   <div class="layui-form-item">
-    <label class="layui-form-label">客户类型</label>
-    <div class="layui-input-block">
-      <select name="clienttype_id" >
-      </select>
-    </div>
-  </div>
-  
-  
-   
-	
-
-	
-  <div class="layui-form-item">
-    <label class="layui-form-label">创建人</label>
-    <div class="layui-input-block">
-      <select name="createoperator_id" >
-      </select>
-    </div>
-  </div>
-  
-<div class="layui-form-item">
-      <label class="layui-form-label">创建时间</label>
-      <div class="layui-input-inline">
-        <input class="layui-input" id="test1" name="createdate" type="text" placeholder="yyyy-MM-dd" >
-      </div>
-    </div>
-  
-    <div class="layui-form-item">
-    <label class="layui-form-label">文件</label>
-    <div class="layui-input-block">
-      <select name="src_id" >
-      </select>
-    </div>
-  </div>
-  
-     <div class="layui-form-item">
-    <label class="layui-form-label">数量</label>
-    <div class="layui-input-block">
-      <input type="text" name="count"  autocomplete="off" placeholder="请输入数量" class="layui-input">
-    </div>
-  </div>
-  
-    <div class="layui-form-item">
-    <label class="layui-form-label">备注</label>
-    <div class="layui-input-block">
-      <input type="text" name="comments"  autocomplete="off" placeholder="请输入备注" class="layui-input">
-    </div>
-  </div>
  
- 
-  
   
   
    <div class="layui-form-item">
     <div class="layui-input-block">
-      <button class="layui-btn" lay-submit="" lay-filter="demo1">保存</button>
+      <button class="layui-btn" lay-submit="" lay-filter="demo1">提交</button>
     </div>
   </div>
 </form>
@@ -206,7 +93,7 @@ var id="${param.id}";
 
 $.post("edit.action",{id:id}, function(json) {
 	render('myform', json);
-	getarray("getSexs.action",{},"[name=sex]",json.sex);
+/* 	getarray("getSexs.action",{},"[name=sex]",json.sex); */
 	getarray("getLinkstatus.action",{},"[name=linkstatu]",json.linkstatu);
 	getarray("getClientstatus.action",{},"[name=clientstatu]",json.clientstatu);
 	getarray("getPurposestatus.action",{},"[name=purposestatu]",json.purposestatu);

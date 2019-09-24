@@ -27,4 +27,9 @@ public interface Revisit_Dao {
 	public void update(Revisit t);
 	@Delete("delete from c_revisit where id=#{id}")
 	public void delete(int id);
+	//以下为业务
+	@Select("select count(1) from c_revisit inner join c_client on c_revisit.client_id=c_client.id ${txt}")
+	public int selectMyCount(@Param("txt")String where);
+	@Select("select c_revisit.*,c_client.name clientname from c_revisit inner join c_client on c_revisit.client_id=c_client.id ${txt} ${lim}")
+	public List<Revisit> getAllById(@Param("txt")String where, @Param("lim")String limit);
 }

@@ -48,6 +48,14 @@ Reserved_Dao dao;
 	public List<Reserved> selectAll() {
 		return dao.selectAll();
 	}
-
+	//以下为业务
+	public int selectMyCount(String where) {
+		// TODO Auto-generated method stub
+		return dao.selectMyCount(where);
+	}
 	
+	public List<Reserved> getMyreserved(String where, String lim) {
+		// TODO Auto-generated method stub
+		return dao.getMyreserved(where,lim);
+	}
 }

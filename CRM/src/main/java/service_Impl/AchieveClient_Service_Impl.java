@@ -1,21 +1,22 @@
 package service_Impl;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import dao.AchieveClient_Dao;
 
-import dao.Revisit_Dao;
-import model.Revisit;
+import model.AchieveClient;
+import service.AchieveClient_Service;
 
-import service.Revisit_Service;
 import utils.ReturnInfo;
 @Service
 
-public class Revisit_Service_Impl implements Revisit_Service{
-@Autowired
-Revisit_Dao dao;
+public class AchieveClient_Service_Impl implements AchieveClient_Service{
+@Autowired  
+AchieveClient_Dao dao;
 	public ReturnInfo select(String txt,Integer page,Integer max) {
 		boolean canpage=page!=null;
 		ReturnInfo info = new ReturnInfo();
@@ -23,13 +24,19 @@ Revisit_Dao dao;
 		if(canpage)info.setCount(dao.selectCount(txt));
 		return info;
 	}
-
-	public void insert(Revisit t) {
+	public ReturnInfo Achieve(String txt,Integer page,Integer max) {
+		boolean canpage=page!=null;
+		ReturnInfo info = new ReturnInfo();
+		info.setList(dao.Achieve(txt,ReturnInfo.getLimit(page, max)));
+		if(canpage)info.setCount(dao.selectCount(txt));
+		return info;
+	}
+	
+	public void insert(AchieveClient t) {
 		dao.insert(t);
 		
 	}
-
-	public void update(Revisit t) {
+	public void update(AchieveClient t) {
 		dao.update(t);
 	}
 
@@ -37,7 +44,7 @@ Revisit_Dao dao;
 		dao.delete(id);
 	}
 
-	public Revisit selectById(int id) {
+	public AchieveClient selectById(int id) {
 		return dao.selectById(id);
 	}
 
@@ -46,18 +53,10 @@ Revisit_Dao dao;
 		return dao.selectCount(txt);
 	}
 
-	public List<Revisit> selectAll() {
+	public List<AchieveClient> selectAll() {
 		return dao.selectAll();
 	}
-
-	public int selectMyCount(String where) {
-		// TODO Auto-generated method stub
-		return dao.selectMyCount(where);
-	}
 	
-	//查看我的回访记录
-	public List<Revisit> getMyrevisit(String where, String limit) {
-		// TODO Auto-generated method stub
-		return dao.getAllById(where, limit);
-	}
+
+	
 }

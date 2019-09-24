@@ -9,7 +9,8 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
-import model.NowClient;
+import model.MyClient;
+
 
 
 
@@ -18,22 +19,30 @@ import model.NowClient;
 
 
 @Repository
-public interface NowClient_Dao {
+public interface MyClient_Dao {
 	@Select("select count(1) from ((c_client inner join c_clienttype on c_client.clienttype_id=c_clienttype.id) inner join c_operator on c_client.createoperator_id=c_operator.id) inner join c_src on c_client.src_id=c_src.id ${txt}")
 	public int selectCount(@Param("txt") String txt);
 	@Select("select c_client.*,c_clienttype.name clienttypename,c_operator.name createoperatorname,c_src.name srcname from ((c_client inner join c_clienttype on c_client.clienttype_id=c_clienttype.id) inner join c_operator on c_client.createoperator_id=c_operator.id) inner join c_src on c_client.src_id=c_src.id where c_client.id=#{id}")
-	public NowClient selectById(int id); 
+	public MyClient selectById(int id); 
 	@Select("select c_client.*,c_clienttype.name clienttypename,c_operator.name createoperatorname,c_src.name srcname from ((c_client inner join c_clienttype on c_client.clienttype_id=c_clienttype.id) inner join c_operator on c_client.createoperator_id=c_operator.id) inner join c_src on c_client.src_id=c_src.id ${txt} ORDER BY c_client.id ${limit}")
-	public List<NowClient> select(@Param("txt") String txt,@Param("limit") String limit);
+	public List<MyClient> select(@Param("txt") String txt,@Param("limit") String limit);
 	@Select("select c_client.*,c_clienttype.name clienttypename,c_operator.name createoperatorname,c_src.name srcname from ((c_client inner join c_clienttype on c_client.clienttype_id=c_clienttype.id) inner join c_operator on c_client.createoperator_id=c_operator.id) inner join c_src on c_client.src_id=c_src.id")
-	public List<NowClient> selectAll();
+	public List<MyClient> selectAll();
 	@Insert("insert into c_client(name,sex,tel,qq,email,address,infos,linkstatu,clientstatu,purposestatu,assessstatu,execstatu,statu,clienttype_id,operatornames,operatorids,createoperator_id,createdate,src_id,count,comments) values(#{name},#{sex},#{tel},#{qq},#{email},#{address},#{infos},#{linkstatu},#{clientstatu},#{purposestatu},#{assessstatu},#{execstatu},#{statu},#{clienttype_id},#{operatornames},#{operatorids},#{createoperator_id},#{createdate},#{src_id},#{count},#{comments})")
-	public void insert(NowClient t);
+	public void insert(MyClient t);
 	@Update("update c_client set name=#{name},sex=#{sex},tel=#{tel},qq=#{qq},email=#{email},address=#{address},infos=#{infos},linkstatu=#{linkstatu},clientstatu=#{clientstatu},purposestatu=#{purposestatu},assessstatu=#{assessstatu},execstatu=#{execstatu},statu=#{statu},clienttype_id=#{clienttype_id},operatornames=#{operatornames},operatorids=#{operatorids},createoperator_id=#{createoperator_id},createdate=#{createdate},src_id=#{src_id},count=#{count},comments=#{comments} where id =#{id}")
-	public void update(NowClient t);
+	public void update(MyClient t);
 	@Delete("delete from c_client where id=#{id}")
 	public void delete(int id);
 	
+	
+	
 	@Select("select c_client.*,c_clienttype.name clienttypename,c_operator.name createoperatorname,c_src.name srcname from ((c_client inner join c_clienttype on c_client.clienttype_id=c_clienttype.id) inner join c_operator on c_client.createoperator_id=c_operator.id) inner join c_src on c_client.src_id=c_src.id ${txt} ${lim}")
-	public List<NowClient> NowClient(@Param("txt")String where, @Param("lim")String limit);
+	public List<MyClient> NowClient(@Param("txt")String where, @Param("lim")String limit);
+	
+	@Update("update c_client set operatorids = null,operatornames = null where id = #{id}")
+	public int remove(MyClient u);
+	@Select("select c_client.*,c_clienttype.name clienttypename,c_operator.name createoperatorname,c_src.name srcname from ((c_client inner join c_clienttype on c_client.clienttype_id=c_clienttype.id) inner join c_operator on c_client.createoperator_id=c_operator.id) inner join c_src on c_client.src_id=c_src.id where c_client.id = #{client_id}")
+	public MyClient getAllById(int client_id);
+
 }
