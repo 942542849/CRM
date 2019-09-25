@@ -62,6 +62,9 @@ MyClient_Dao dao;
 		// TODO Auto-generated method stub
 		return dao.getAllById(client_id);
 	}
-
+	public List<MyClient> getMyexecuted(String where, String limit) {
+		// TODO Auto-generated method stub
+		return dao.getMyexecuted(where,limit);
+	}
 	
 }

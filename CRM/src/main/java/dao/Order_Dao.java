@@ -28,4 +28,7 @@ public interface Order_Dao {
 	public void update(Order t);
 	@Delete("delete from c_order where id=#{id}")
 	public void delete(int id);
+	
+	@Select("select c_order.*,c_client.name clientname,c_operator.name operatorname from (c_order inner join c_client on c_order.client_id=c_client.id)inner join c_operator on c_order.operator_id=c_operator.id where client_id=#{client_id}")
+	public Order getByClientId(int client_id);
 }

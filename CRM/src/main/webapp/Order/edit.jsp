@@ -15,6 +15,10 @@
 <body>
 <style>
 .layui-input{width:200px;}
+.layui-layer {
+	width: 400px;
+	height: 500px;
+}
 </style>
 <form class="layui-form" lay-filter="myform">
 <input type="hidden" name="id" >
@@ -34,40 +38,42 @@
     </div>
  	 </div>
  	 
- 	  <div class="layui-form-item">
-    <label class="layui-form-label">创建日期</label>
-    <div class="layui-input-block">
-      <input type="text" name="createdate"  autocomplete="off" placeholder="请输入创建日期" class="layui-input">
+ 	 <div class="layui-form-item">
+      <label class="layui-form-label">创建时间</label>
+      <div class="layui-input-inline">
+        <input class="layui-input" id="test1" name="createdate" type="text" placeholder="yyyy-MM-dd" >
+      </div>
     </div>
-  </div>
+ 	
+ 	 <div class="layui-form-item">
+      <label class="layui-form-label">业绩时间</label>
+      <div class="layui-input-inline">
+        <input class="layui-input" id="test2" name="compdate" type="text" placeholder="yyyy-MM-dd" >
+      </div>
+    </div>
   
-   <div class="layui-form-item">
-    <label class="layui-form-label">业绩日期</label>
-    <div class="layui-input-block">
-      <input type="text" name="compdate"  autocomplete="off" placeholder="请输入业绩日期" class="layui-input">
+    <div class="layui-form-item">
+      <label class="layui-form-label">合同日期</label>
+      <div class="layui-input-inline">
+        <input class="layui-input" id="test3" name="orderdate" type="text" placeholder="yyyy-MM-dd" >
+      </div>
     </div>
-  </div>
+    
+    
+        <div class="layui-form-item">
+      <label class="layui-form-label">起始日期</label>
+      <div class="layui-input-inline">
+        <input class="layui-input" id="test4" name="startdate" type="text" placeholder="yyyy-MM-dd" >
+      </div>
+    </div>
   
-   <div class="layui-form-item">
-    <label class="layui-form-label">合同日期</label>
-    <div class="layui-input-block">
-      <input type="text" name="orderdate"  autocomplete="off" placeholder="请输入合同日期" class="layui-input">
+        <div class="layui-form-item">
+      <label class="layui-form-label">截止日期</label>
+      <div class="layui-input-inline">
+        <input class="layui-input" id="test5" name="enddate" type="text" placeholder="yyyy-MM-dd" >
+      </div>
     </div>
-  </div>
   
-   <div class="layui-form-item">
-    <label class="layui-form-label">起始日期</label>
-    <div class="layui-input-block">
-      <input type="text" name="startdate"  autocomplete="off" placeholder="请输入起始日期" class="layui-input">
-    </div>
-  </div>
-  
-   <div class="layui-form-item">
-    <label class="layui-form-label">截止日期</label>
-    <div class="layui-input-block">
-      <input type="text" name="enddate"  autocomplete="off" placeholder="请输入截止日期" class="layui-input">
-    </div>
-  </div>
   
   <div class="layui-form-item">
     <label class="layui-form-label">客户负责人</label>
@@ -163,6 +169,54 @@ layui.use(['form',], function(){
 		  });
 });
 
+layui.use('laydate', function(){
+	  var laydate = layui.laydate;
+	  
+	  //常规用法
+	  laydate.render({
+	    elem: '#test1'
+	    ,trigger: 'click'
+	  });
+});
+layui.use('laydate', function(){
+	  var laydate = layui.laydate;
+	  
+	  //常规用法
+	  laydate.render({
+	    elem: '#test2'
+	    ,trigger: 'click'
+	  });
+});
+
+layui.use('laydate', function(){
+	  var laydate = layui.laydate;
+	  
+	  //常规用法
+	  laydate.render({
+	    elem: '#test3'
+	    ,trigger: 'click'
+	  });
+});
+
+layui.use('laydate', function(){
+	  var laydate = layui.laydate;
+	  
+	  //常规用法
+	  laydate.render({
+	    elem: '#test4'
+	    ,trigger: 'click'
+	  });
+});
+
+layui.use('laydate', function(){
+	  var laydate = layui.laydate;
+	  
+	  //常规用法
+	  laydate.render({
+	    elem: '#test5'
+	    ,trigger: 'click'
+	  });
+});
 
 
 

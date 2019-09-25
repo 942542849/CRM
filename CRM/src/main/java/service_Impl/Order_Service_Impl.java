@@ -50,5 +50,8 @@ Order_Dao dao;
 		return dao.selectAll();
 	}
 
-	
+	public Order getByClientId(int client_id) {
+		// TODO Auto-generated method stub
+		return dao.getByClientId(client_id);
+	}
 }

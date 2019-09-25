@@ -44,5 +44,9 @@ public interface MyClient_Dao {
 	public int remove(MyClient u);
 	@Select("select c_client.*,c_clienttype.name clienttypename,c_operator.name createoperatorname,c_src.name srcname from ((c_client inner join c_clienttype on c_client.clienttype_id=c_clienttype.id) inner join c_operator on c_client.createoperator_id=c_operator.id) inner join c_src on c_client.src_id=c_src.id where c_client.id = #{client_id}")
 	public MyClient getAllById(int client_id);
+	
+	@Select("select c_client.*,c_clienttype.name clienttypename,c_operator.name createoperatorname,c_src.name srcname from ((c_client inner join c_clienttype on c_client.clienttype_id=c_clienttype.id) inner join c_operator on c_client.createoperator_id=c_operator.id) inner join c_src on c_client.src_id=c_src.id  ${txt} ${lim}")
+	public List<MyClient> getMyexecuted(@Param("txt")String where, @Param("lim")String limit);
+
 
 }

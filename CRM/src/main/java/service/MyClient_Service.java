@@ -16,4 +16,5 @@ public interface MyClient_Service {
 	public List<MyClient> NowClient(String where, String lim);
 	public int remove(MyClient u);
 	public MyClient getAllById(int client_id);
+	public List<MyClient> getMyexecuted(String where, String lim);
 }

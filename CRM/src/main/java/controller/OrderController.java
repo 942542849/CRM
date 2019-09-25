@@ -69,5 +69,9 @@ public class OrderController {
 			return opservice.selectAll();
 		}
 		
+		@RequestMapping("getByClientId")
+		public @ResponseBody Order getByClientId(int client_id) {
+			return orderservice.getByClientId(client_id);
+		}
 
 }

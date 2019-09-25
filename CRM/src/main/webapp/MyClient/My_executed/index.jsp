@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html >
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="../show/lib/layui/css/layui.css" rel="stylesheet">
-<script type="text/javascript" src="../show/lib/layui/layui.all.js"></script>
-<script src="../show/js/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="../show/js/my.js"></script>
+<link href="../../show/lib/layui/css/layui.css" rel="stylesheet">
+<script type="text/javascript" src="../../show/lib/layui/layui.all.js"></script>
+<script src="../../show/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="../../show/js/my.js"></script>
 <title></title>
 <style type="text/css">
 .input {
@@ -17,7 +17,6 @@
 	margin-right: 10px;
 	width: 200px;
 }
-
 .layui-form-select{width:200px;
 }
 </style>
@@ -25,19 +24,22 @@
 <body>
 	<table id="demo" lay-filter="test"></table>
 	<script type="text/html" id="barDemo">
-
-
+<a class="layui-btn layui-btn-xs" lay-event="orders">合同详情</a>
+<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="infos">客户详情</a>
 </script>
 	<script type="text/html" id="toolbarDemo">
   <div class="layui-btn-container">
     <div class="layui-input-inline">
       <input type="text" name="txt" lay-verify="title"  autocomplete="off" placeholder="请输入名称" class="layui-input input">
     </div>
-    <button class="layui-btn layui-btn-sm" lay-event="search">查询客户</button>
+    <button class="layui-btn layui-btn-sm" lay-event="search">查询</button>
+    <button class="layui-btn layui-btn-sm" lay-event="appoints">批量分配</button>
   </div>
 </script>
 
-	<script>
+	<script type="text/javascript">
+	
+	var tel = ${currentOperator.tel};
 	
 		layui.use('table', function() {
 			var table = layui.table;
@@ -46,8 +48,9 @@
 			table.render({
 				elem : '#demo',
 				height : 462,
-				url : 'Achieve.action' //数据接口
+				url : '../Myexecuted.action' //数据接口
 				,
+				where:{tel:tel},
 				toolbar : '#toolbarDemo',
 				page : true //开启分页
 				,
@@ -55,121 +58,89 @@
 				{
 					field : 'id',
 					title : 'ID',
-					width : 80,
+					width : 100,
 					sort : true,
 				}, {
 					field : 'name',
-					title : '联系人性名',
-					width : 180
-				}, {
+					title : '客户名称',
+					width : 100
+				},{
 					field : 'sexname',
-					title : '联系人性别',
+					title : '性别',
 					width : 80
-				}, 
-				{
+				},{
 					field : 'tel',
-					title : '联系电话',
-					width : 80,
-					
-				},
-				{
+					title : '联系方式',
+					width : 150
+				},{
 					field : 'qq',
-					title : 'qq',
-					width : 80,
-					
-				},
-				{
+					title : 'QQ',
+					width : 150
+				},{
 					field : 'email',
-					title : 'email',
-					width : 80,
-					
-				},
-				{
+					title : '邮箱',
+					width : 150
+				},{
 					field : 'address',
-					title : 'address',
-					width : 80,
-					
-				},
-				{
+					title : '地址',
+					width : 150
+				},{
 					field : 'infos',
-					title : 'infos',
-					width : 80,
-					
-				},
-				 {
-					field : 'operatornames',
-					title : '负责人总览',
-					width : 80
-				}, {
-					field : 'operatorids',
-					title : '负责人总览',
-					width : 80
-				},
-				{
+					title : '额外信息',
+					width : 150
+				},{
 					field : 'linkstatuname',
-					title : '联通状态',
-					width : 80
-				}, 
-				{
+					title : '电话状态',
+					width : 150
+				},{
 					field : 'clientstatuname',
 					title : '客户状态',
-					width : 80
-				}, 
-				{
+					width : 150
+				},{
 					field : 'purposestatuname',
 					title : '意向状态',
-					width : 80
-				}, 
-				{
+					width : 150
+				},{
 					field : 'assessstatuname',
 					title : '评估状态',
-					width : 80
-				}, 
-				{
+					width : 150
+				},{
 					field : 'execstatuname',
-					title : '处理状态 ',
-					width : 80
-				}, 
-				{
-					field : 'statuname',
-					title : '状态 ',
-					width : 80
-				}, 
-				{
+					title : '执行状态',
+					width : 150
+				}, {
 					field : 'clienttypename',
 					title : '客户类型',
-					width : 80
-				},
-				{
+					width : 150
+				}, {
+					field : 'operatornames',
+					title : '处理人',
+					width : 150
+				}, {
 					field : 'createoperatorname',
-					title : '首次负责人',
-					width : 80
-				},
-				{
+					title : '创建人',
+					width : 150
+				}, {
 					field : 'createdate',
-					title : '创建日期',
-					width : 80
-				},
-				{
+					title : '创建时间',
+					width : 150
+				}, {
 					field : 'srcname',
-					title : '文件路径',
-					width : 80
-				},
-				{
+					title : '客户来源',
+					width : 150
+				}, {
 					field : 'count',
-					title : '数量',
-					width : 80
-				},
-				{
+					title : '回访次数',
+					width : 150
+				}, {
 					field : 'comments',
 					title : '备注',
-					width : 80
-				},
-				{
+					width : 150
+				}, {
 					fixed : 'right',
 					title : '操作',
 					toolbar : '#barDemo',
-					width : 150,
+					width : 200,
 					align : 'center'
 				}
 
@@ -179,7 +150,7 @@
 						"code" : res.code,
 						"msg" : res.msg,
 						"count" : res.count,
-						data : res.list
+						"data" : res.list
 					}
 				}
 			});
@@ -190,20 +161,10 @@
 			//test  是table的lay-filter="test" 属性
 			table.on('tool(test)', function(obj) {
 				var data = obj.data;
-				if (obj.event === 'del') { ///lay-event 属性
-					
-					myconfirm("刪除？",function(){
-						$.post("delete.action", {id:data.id}, 
-								function(json) {
-							if(json.status!=1) console.log("");
-							else{
-								obj.del();
-							}
-							layer.close(layer.index);
-								}, "json");
-					});
+				if (obj.event === 'infos') { ///lay-event 属性
+					openFrame('../My_reserved/infos.jsp?client_id='+data.id,'客户详情',['1000px', '95%']);
 				}else{
-					openFrame('edit.jsp?id='+data.id,'分配客户',['800px','600px']);
+					openFrame('./orders.jsp?client_id='+data.id,'合同详情',['1000px', '60%']);
 				}
 			});
 
@@ -211,12 +172,13 @@
 				if (obj.event === 'search') {
 					var txt = $(event.target).prev().find("input").val();
 					reload('demo',{txt : txt});
-				} else if(obj.event === 'add') {
-					openFrame("add.jsp",'新增',['800px','600px']);
+				} else {
+					openFrame("./edit.jsp",'批量分配',['900px', '100%']);
 				}
 			});
 
 		});
+		
 	</script>
 </body>
 </html>

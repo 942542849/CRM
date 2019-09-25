@@ -180,7 +180,7 @@
 					var txt = $(event.target).prev().find("input").val();
 					reload('demo',{txt : txt});
 				} else if(obj.event === 'add') {
-					openFrame("add.jsp");
+					openFrame("add.jsp",'新增合同',['1000px','600px']);
 				}
 			});
 

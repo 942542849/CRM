@@ -13,4 +13,5 @@ public interface Order_Service {
 	public void insert(Order t);
 	public void update(Order t);
 	public void delete(int id);
+	public Order getByClientId(int client_id);
 }

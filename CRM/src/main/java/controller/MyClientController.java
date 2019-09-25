@@ -96,7 +96,23 @@ public class MyClientController{
 				return info;
 			}
 		
-		
+
+			// 查看我的已处理客户
+			@RequestMapping("Myexecuted")
+			public @ResponseBody ReturnInfo index5(String tel, String txt, Integer page, Integer limit) {
+				ReturnInfo info = new ReturnInfo();
+				String where = "";
+				Operator u = opservice.selectByTel(tel);
+				where = "where c_client.operatornames = ''";
+				if (u != null)
+					where = "where c_client.operatornames like '%" + u.getName() + "%' and c_client.count != 0 and c_client.execstatu=2";
+				if (txt != null)
+					where = where + " and c_client.name like '%" + txt + "%'";
+				String lim = info.getLimit(page, limit);
+				info.setCount(clientservice.selectCount(where));
+				info.setList(clientservice.getMyexecuted(where, lim));
+				return info;
+			}
 		
 		
 		
