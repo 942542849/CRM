@@ -55,6 +55,9 @@ NoheadClient_Dao dao;
 	public List<NoheadClient> selectAll() {
 		return dao.selectAll();
 	}
-
+	public int updates(String clientid, String operatorids, String operatornames) {
+		// TODO Auto-generated method stub
+		return dao.updates(clientid,operatorids,operatornames);
+	}
 	
 }

@@ -26,6 +26,7 @@
 	<table id="demo" lay-filter="test"></table>
 	<script type="text/html" id="barDemo">
 <a class="layui-btn  layui-btn-xs" lay-event="edit">分配</a>
+<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 
 </script>
 	<script type="text/html" id="toolbarDemo">
@@ -34,6 +35,8 @@
       <input type="text" name="txt" lay-verify="title"  autocomplete="off" placeholder="请输入名称" class="layui-input input">
     </div>
     <button class="layui-btn layui-btn-sm" lay-event="search">查询客户</button>
+    <button class="layui-btn layui-btn-sm" lay-event="import">导入</button>
+    <button class="layui-btn layui-btn-sm" lay-event="appoints">批量分配</button>
   </div>
 </script>
 
@@ -51,7 +54,12 @@
 				toolbar : '#toolbarDemo',
 				page : true //开启分页
 				,
+				
 				cols : [ [ //表头
+					{
+						type: 'checkbox',
+						fixed: 'left'
+					},
 				{
 					field : 'id',
 					title : 'ID',
@@ -92,7 +100,7 @@
 				},
 				{
 					field : 'infos',
-					title : 'infos',
+					title : '额外信息',
 					width : 80,
 					
 				},
@@ -142,7 +150,7 @@
 				},
 				{
 					field : 'createoperatorname',
-					title : '首次负责人',
+					title : '创建人',
 					width : 80
 				},
 				{
@@ -152,7 +160,7 @@
 				},
 				{
 					field : 'srcname',
-					title : '文件路径',
+					title : '客户来源',
 					width : 80
 				},
 				{
@@ -211,8 +219,20 @@
 				if (obj.event === 'search') {
 					var txt = $(event.target).prev().find("input").val();
 					reload('demo',{txt : txt});
-				} else if(obj.event === 'add') {
-					openFrame("add.jsp",'新增',['800px','600px']);
+				} else if(obj.event === 'appoints') {
+					var checkStatus = table.checkStatus(obj.config.id);
+					if (checkStatus.data.length == 0){
+						layer.msg('请务必选择一行', {
+							  icon: 2,
+							  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+							});
+						return ;
+					}
+					var clientids="";
+                    for (var i=0;i<checkStatus.data.length;i++){
+                    	clientids = clientids + checkStatus.data[i].id + ',';
+                    }
+                    openFrame('appoints.jsp?clientids='+clientids,'批量分配',['900px', '100%']);
 				}
 			});
 

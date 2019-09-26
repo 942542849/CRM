@@ -35,6 +35,7 @@ public class NoheadClientController{
 			}
 			return nclientservice.select(whera,page,limit);
 		}
+		//未分配
 		@RequestMapping("nohead")
 		public @ResponseBody ReturnInfo index1(String txt,Integer page,Integer limit){
 			String whera="";
@@ -43,7 +44,16 @@ public class NoheadClientController{
 			}
 			return nclientservice.Nohead(whera,page,limit);
 		}
-		
+		//批量分配 
+		@RequestMapping("updates")
+		public @ResponseBody String updates(String clientids,String operatorids,String operatornames) {
+		//	System.out.println(operatorids);
+			String clientid[] = clientids.split(",");     
+			for(int i = 0;i<clientid.length;i++) {      
+				nclientservice.updates(clientid[i],operatorids,operatornames);
+			}
+			return "{\"status\":1}";
+		}
 		
 		@RequestMapping("delete")
 		public @ResponseBody String delete(int id){

@@ -14,4 +14,6 @@ public interface NoheadClient_Service {
 	public void update(NoheadClient t);
 	public void delete(int id);
 	public ReturnInfo Nohead(String txt,Integer limit,Integer page);
+	public int updates(String clientid, String operatorids, String operatornames);
+	
 }

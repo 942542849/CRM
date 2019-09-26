@@ -39,7 +39,12 @@ public interface NoheadClient_Dao {
 	public void delete(int id);	
 	@Select("select c_client.*,c_clienttype.name clienttypename,c_operator.name createoperatorname,c_src.name srcname from ((c_client inner join c_clienttype on c_client.clienttype_id=c_clienttype.id) inner join c_operator on c_client.createoperator_id=c_operator.id) inner join c_src on c_client.src_id=c_src.id where (c_client.operatorids = '' or c_client.operatorids is null)${txt} ${limit}")
 	public List<NoheadClient> Nohead(@Param("txt") String txt,@Param("limit") String limit);
-//	
-//	@Select("select c_client.*,c_client_type.name clienttypename,c_user.name createusername from (c_client inner join c_client_type on c_client.clienttypeid = c_client_type.id) inner join c_user on c_client.createuserid = c_user.id where c_client.userids = '' or c_client.userids is null ${txt} ${lim}")
-//	public List<Client> getNoappoint(@Param("txt")String where, @Param("lim")String limit);
+	//批量分配
+
+	@Update("update c_client set operatorids = #{operatorids},operatornames = #{operatornames} where id = #{clientid}")
+	public int updates(@Param("clientid")String clientid, @Param("operatorids")String operatorids, @Param("operatornames")String operatornames);
+
+	
+	
+
 }
