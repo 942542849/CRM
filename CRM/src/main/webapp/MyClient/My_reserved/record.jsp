@@ -143,7 +143,7 @@
 					var txt = $(event.target).prev().find("input").val();
 					reload('demo',{txt : txt});
 				} else {
-					openFrame("../../Revisit/edit.jsp",'新增',['800px', '70%']);
+					openFrame("../../Revisit/add.jsp",'新增',['800px', '70%']);
 				}
 			});
 
