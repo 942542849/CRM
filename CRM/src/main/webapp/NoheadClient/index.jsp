@@ -233,6 +233,8 @@
                     	clientids = clientids + checkStatus.data[i].id + ',';
                     }
                     openFrame('appoints.jsp?clientids='+clientids,'批量分配',['900px', '100%']);
+				}else if(obj.event === 'import'){
+					openFrame('import.html','导入',['900px', '100%']);
 				}
 			});
 

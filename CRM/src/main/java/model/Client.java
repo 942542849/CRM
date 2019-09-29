@@ -219,5 +219,18 @@ public class Client {
 	public void setOperatornames(String operatornames) {
 		this.operatornames = operatornames;
 	}
+	
+	
+	//文件上传
+	private int uploadstatus=0;
+	public String getUploadstatusname() {
+		return uploadstatus==0?"未上传":"成功";
+	}
+	public int getUploadstatus() {
+		return uploadstatus;
+	}
+	public void setUploadstatus(int uploadstatus) {
+           this.uploadstatus=uploadstatus;
+	}
 
 }
